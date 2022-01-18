@@ -1,0 +1,46 @@
+---
+title: "Twitter ON-X Groupe - Data Analyse"
+author: "Thibaut Fortuné"
+date: "17/11/2021"
+output: html_document
+---
+
+```{r}
+library(gdata)
+library(tidyverse)
+library(dplyr)
+```
+
+# 1. import des données Twitter
+
+```{r}
+data1020 <- read.csv("data/daily_tweet_activity_metrics_groupe_onx_20201001_20201101_fr.csv", header = TRUE, sep = ",")
+data1120 <- read.csv("data/daily_tweet_activity_metrics_groupe_onx_20201101_20201201_fr.csv", header = TRUE, sep = ",")
+data1220 <- read.csv("data/daily_tweet_activity_metrics_groupe_onx_20201201_20210101_fr.csv", header = TRUE, sep = ",")
+data0121 <- read.csv("data/daily_tweet_activity_metrics_groupe_onx_20210101_20210201_fr.csv", header = TRUE, sep = ",")
+data0221 <- read.csv("data/daily_tweet_activity_metrics_groupe_onx_20210201_20210301_fr.csv", header = TRUE, sep = ",")
+data0321 <- read.csv("data/daily_tweet_activity_metrics_groupe_onx_20210301_20210401_fr.csv", header = TRUE, sep = ",")
+data0421 <- read.csv("data/daily_tweet_activity_metrics_groupe_onx_20210401_20210501_fr.csv", header = TRUE, sep = ",")
+data0521 <- read.csv("data/daily_tweet_activity_metrics_groupe_onx_20210501_20210601_fr.csv", header = TRUE, sep = ",")
+data0621 <- read.csv("data/daily_tweet_activity_metrics_groupe_onx_20210601_20210701_fr.csv", header = TRUE, sep = ",")
+data0721 <- read.csv("data/daily_tweet_activity_metrics_groupe_onx_20210701_20210801_fr.csv", header = TRUE, sep = ",")
+data0821 <- read.csv("data/daily_tweet_activity_metrics_groupe_onx_20210801_20210901_fr.csv", header = TRUE, sep = ",")
+data0921 <- read.csv("data/daily_tweet_activity_metrics_groupe_onx_20210901_20211001_fr.csv", header = TRUE, sep = ",")
+data1021 <- read.csv("data/daily_tweet_activity_metrics_groupe_onx_20211001_20211101_fr.csv", header = TRUE, sep = ",")
+data1121 <- read.csv("data/daily_tweet_activity_metrics_groupe_onx_20211101_20211118_fr.csv", header = TRUE, sep = ",")
+
+datatwitter <- rbind(data1020, data1120, data1220, data0121, data0221, data0321, data0421, data0521, data0621, data0721, data0821, data0921, data1021, data1121)
+```
+
+#2. convertion des dates en format Date
+
+```{r}
+as.Date(datatwitter[,"Date"])
+```
+
+# 3. export du data frame en .csv
+
+```{r}
+write.csv(datatwitter, "data/twitter_metrics_20201001_202120211118.csv")
+```
+
