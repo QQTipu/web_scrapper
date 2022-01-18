@@ -31,12 +31,19 @@ f = open(path_url, 'r', encoding='utf-8')
 urls = f.read().splitlines()
 f.close()
 
-print(urls)
+def show_monogram(txt_clean, n):
+    fdist = FreqDist(txt_clean)
+    top = dict(fdist.most_common(100))
+    fdist = pd.Series(top)
+    print(fdist)
+
+    fig = px.bar(x=fdist.index, y=fdist.values)
+    fig.show()
+
 
 txt_clean = []
 
 for url in urls :
-    print(requests.get(url))
     data = requests.get(url)                                    # On va charger le HTML de la page "url"
     soup = BeautifulSoup(data.text, 'html.parser')              # On instancie l'objet soup, à partir de la classe BeautifulSoup, pour parser le HTML
 
@@ -53,19 +60,13 @@ for url in urls :
                 # word = lemmatizer.lemmatize(word, 'v')                # Passe les verbes à l'infinitf
                 txt_clean.append(stem)
 
-# fdist = FreqDist(txt_clean)
-# top = dict(fdist.most_common(100))
-# fdist = pd.Series(top)
-# print(fdist)
+show_monogram(txt_clean, 100)
 
-# fig = px.bar(x=fdist.index, y=fdist.values)
-# fig.show()
-
-ngram = list(ngrams(txt_clean, 2))
-freq_ngram = FreqDist(ngram)
-top = dict(freq_ngram.most_common(100))
-freq_ngram = pd.Series(top)
-print(freq_ngram)
+# ngram = list(ngrams(txt_clean, 2))
+# freq_ngram = FreqDist(ngram)
+# top = dict(freq_ngram.most_common(100))
+# freq_ngram = pd.Series(top)
+# print(freq_ngram)
 
 # fig = px.bar(x=freq_ngram.index, y=freq_ngram.values)
 # fig.show()
