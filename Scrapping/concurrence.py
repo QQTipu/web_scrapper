@@ -75,12 +75,10 @@ for url in urls :
 show_ngrams(txt_clean, 25, 4)
 
 
-# txt_final = " ".join(txt_clean)
+txt_final = " ".join(txt_clean)
+nom_sem = "web-semantique.txt"
+path_sem = os.path.join(chemin, nom_sem)
 
-# nom_sem = "semantique.txt"
-
-# path_sem = os.path.join(chemin, nom_sem)
-
-# f = open(path_sem,'w', encoding='utf-8')                     # On ouvre le fichier de rendu
-# f.write(txt_final)
-# f.close()
+f = open(path_sem,'w', encoding='utf-8')                     # On ouvre le fichier de rendu
+f.write(txt_final)
+f.close()
