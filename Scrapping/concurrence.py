@@ -56,6 +56,7 @@ def show_ngrams(txt_clean, nb_item, n):
 txt_clean = []
 
 for url in urls :
+    print(url, requests.get(url))
     data = requests.get(url)                                    # On va charger le HTML de la page "url"
     soup = BeautifulSoup(data.text, 'html.parser')              # On instancie l'objet soup, à partir de la classe BeautifulSoup, pour parser le HTML
 
