@@ -55,7 +55,8 @@ def clean_text(data_web, tag):
     
     return list_fin
 
-def show_ngrams(txt_clean, nb_item, n):
+def show_ngrams(data_web, tag, nb_item, n):
+    txt_clean = clean_text(data_web, tag)
     ngram = list(ngrams(txt_clean, n))
     freq_ngram = FreqDist(ngram)
     top = dict(freq_ngram.most_common(nb_item))
@@ -106,6 +107,4 @@ def scrapper(urls, tags):
     return df
 
 balises = ["h1", "h2", "h3", "p", "meta", "alt"]
-data_fin = scrapper(urls, balises)
-sem_to_analyse = clean_text(data_fin, "p")
-show_ngrams(sem_to_analyse, 500, 2)
+show_ngrams(scrapper(urls, balises), "p", 50, 2)
