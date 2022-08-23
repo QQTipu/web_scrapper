@@ -16,7 +16,7 @@ The **scrapper** function needs two arguments :
  - the tags you want to get.
 
 It will return you a pandas DataFrame for every urls with the tags chosen.
-You also have an excel file exported as "web_semantique.xlsx" to share teh data with your team.
+You also have an excel file exported as "web_semantique.xlsx" to share the data with your team.
 
 ## Plot ngrams
 
